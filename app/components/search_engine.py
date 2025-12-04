@@ -1,10 +1,10 @@
 from flask import Blueprint, render_template, request
 
-# Регистрируем blueprint поиска
+# Blueprint поиска
 search_bp = Blueprint(
-    "search",
+    "search",                  # ← НАЗВАНИЕ BLUEPRINT ДОЛЖНО БЫТЬ "search"
     __name__,
-    url_prefix="/search",
+    url_prefix="/search",      # ← ПРАВИЛЬНЫЙ ПРЕФИКС
     template_folder="../templates"
 )
 
@@ -31,16 +31,17 @@ news_data = [
 ]
 
 
+# Основной маршрут поиска
 @search_bp.route("/", methods=["GET", "POST"])
 def search():
     query = ""
     results = []
 
-    # POST — если форма отправлена
     if request.method == "POST":
         query = request.form.get("query", "").lower().strip()
 
         if query:
+
             # Поиск в статьях
             for a in articles_data:
                 if query in a["title"].lower():
