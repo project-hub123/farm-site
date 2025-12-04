@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+
+    <h1>Админ-панель</h1>
+    <p>Вы вошли как администратор. Здесь отображаются все пользователи системы.</p>
+
+    <a href="{{ url_for('users.admin_create') }}" class="btn btn-primary" style="margin: 15px 0; display:inline-block;">
+        Создать нового пользователя
+    </a>
+
+    <table class="admin-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Логин</th>
+                <th>Роль</th>
+                <th>Действие</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for u in users %}
+            <tr>
+                <td>{{ u.id }}</td>
+                <td>{{ u.login }}</td>
+                <td>{{ u.role }}</td>
+                <td>
+                    {% if u.role != 'admin' %}
+                    <a href="{{ url_for('users.admin_delete', user_id=u.id) }}"
+                       class="btn btn-danger"
+                       onclick="return confirm('Удалить пользователя {{ u.login }}?');">
+                        Удалить
+                    </a>
+                    {% else %}
+                    <span style="color: #888;">Недоступно</span>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+{% endblock %}

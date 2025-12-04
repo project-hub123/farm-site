@@ -263,3 +263,38 @@ footer {
     margin-top: 40px;
     background: #ddd;
 }
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    font-size: 16px;
+}
+
+.admin-table th, .admin-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+.admin-table th {
+    background-color: #f5f5f5;
+    font-weight: bold;
+}
+
+.admin-table tr:nth-child(even) {
+    background-color: #fafafa;
+}
+
+.btn-danger {
+    background-color: #d9534f;
+    padding: 6px 12px;
+    border-radius: 4px;
+    color: white;
+    text-decoration: none;
+}
+
+.btn-danger:hover {
+    background-color: #c9302c;
+}
+
