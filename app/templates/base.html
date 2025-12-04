@@ -8,8 +8,8 @@
     {% if session.get('lowvision') %}
         <link rel="stylesheet" href="{{ url_for('static', filename='css/lowvision.css') }}">
     {% endif %}
-
 </head>
+
 <body>
 
 <header>
@@ -22,12 +22,12 @@
         <a href="{{ url_for('main.contacts') }}">Контакты</a>
         <a href="{{ url_for('main.sitemap') }}">Карта сайта</a>
 
-        {% if session.get('user') %}
+        {% if current_user.is_authenticated %}
             <a href="{{ url_for('users.profile') }}">Профиль</a>
-            <a href="{{ url_for('users.logout') }}">Выход</a>
+            <a href="{{ url_for('auth.logout') }}">Выход</a>
         {% else %}
-            <a href="{{ url_for('users.login') }}">Вход</a>
-            <a href="{{ url_for('users.register') }}">Регистрация</a>
+            <a href="{{ url_for('auth.login') }}">Вход</a>
+            <a href="{{ url_for('auth.register') }}">Регистрация</a>
         {% endif %}
     </nav>
 </header>
