@@ -1,59 +1,66 @@
 from flask import Blueprint, render_template, request, redirect, url_for, session
-from werkzeug.security import check_password_hash, generate_password_hash
+from app.database.models import db, User
 
-auth_bp = Blueprint('auth', __name__, template_folder='../templates')
+auth_bp = Blueprint("auth", __name__, template_folder="../templates")
 
-# Простая имитация БД (можно заменить на models.py)
-users_db = {
-    "admin": {
-        "password": generate_password_hash("admin123"),
-        "role": "admin"
-    },
-    "user": {
-        "password": generate_password_hash("user123"),
-        "role": "user"
-    }
-}
+# ------------------------------
+# АВТО-СОЗДАНИЕ АДМИНА
+# ------------------------------
+def create_admin():
+    admin = User.query.filter_by(role="admin").first()
+    if not admin:
+        admin = User(login="admin", role="admin")
+        admin.set_password("admin123")
+        db.session.add(admin)
+        db.session.commit()
 
-
-@auth_bp.route('/login', methods=['GET', 'POST'])
+# ------------------------------
+# ВХОД
+# ------------------------------
+@auth_bp.route("/login", methods=["GET", "POST"])
 def login():
-    if request.method == 'POST':
-        login_input = request.form.get('login')
-        password_input = request.form.get('password')
+    if request.method == "POST":
+        login_input = request.form.get("login")
+        password_input = request.form.get("password")
 
-        user = users_db.get(login_input)
+        user = User.query.filter_by(login(login_input)).first()
 
-        if user and check_password_hash(user["password"], password_input):
-            session['user'] = login_input
-            session['role'] = user["role"]
-            return redirect(url_for('main.index'))
+        if user and user.check_password(password_input):
+            session["user"] = user.login
+            session["role"] = user.role
+            session["user_id"] = user.id
+            return redirect(url_for("main.index"))
 
-        return render_template('login.html', error="Неверный логин или пароль")
+        return render_template("login.html", error="Неверный логин или пароль")
 
-    return render_template('login.html')
+    return render_template("login.html")
 
-
-@auth_bp.route('/register', methods=['GET', 'POST'])
+# ------------------------------
+# РЕГИСТРАЦИЯ
+# ------------------------------
+@auth_bp.route("/register", methods=["GET", "POST"])
 def register():
-    if request.method == 'POST':
-        login_input = request.form.get('login')
-        password_input = request.form.get('password')
+    if request.method == "POST":
+        login_input = request.form.get("login")
+        password_input = request.form.get("password")
 
-        if login_input in users_db:
-            return render_template('register.html', error="Пользователь уже существует")
+        if User.query.filter_by(login=login_input).first():
+            return render_template("register.html", error="Пользователь уже существует")
 
-        users_db[login_input] = {
-            "password": generate_password_hash(password_input),
-            "role": "user"
-        }
+        new_user = User(login=login_input, role="user")
+        new_user.set_password(password_input)
 
-        return redirect(url_for('auth.login'))
+        db.session.add(new_user)
+        db.session.commit()
 
-    return render_template('register.html')
+        return redirect(url_for("auth.login"))
 
+    return render_template("register.html")
 
-@auth_bp.route('/logout')
+# ------------------------------
+# ВЫХОД
+# ------------------------------
+@auth_bp.route("/logout")
 def logout():
     session.clear()
-    return redirect(url_for('main.index'))
+    return redirect(url_for("main.index"))
