@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
 {% block title %}Карта сайта — Ферма{% endblock %}
 
@@ -29,14 +29,16 @@
             </ul>
         </li>
 
+        <li><a href="{{ url_for('news.news_list') }}">Новости</a></li>
+
         <li><a href="{{ url_for('main.contacts') }}">Контакты</a></li>
 
-        {% if session.get('user') %}
+        {% if current_user.is_authenticated %}
             <li><a href="{{ url_for('users.profile') }}">Профиль</a></li>
-            <li><a href="{{ url_for('users.logout') }}">Выход</a></li>
+            <li><a href="{{ url_for('auth.logout') }}">Выход</a></li>
         {% else %}
-            <li><a href="{{ url_for('users.login') }}">Вход</a></li>
-            <li><a href="{{ url_for('users.register') }}">Регистрация</a></li>
+            <li><a href="{{ url_for('auth.login') }}">Вход</a></li>
+            <li><a href="{{ url_for('auth.register') }}">Регистрация</a></li>
         {% endif %}
 
         <li><a href="{{ url_for('main.sitemap') }}">Карта сайта</a></li>

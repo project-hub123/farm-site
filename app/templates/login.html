@@ -8,13 +8,26 @@
     <h1>Вход</h1>
 
     <form method="POST" action="{{ url_for('auth.login') }}">
-        <input type="text" name="username" placeholder="Логин" required>
-        <input type="password" name="password" placeholder="Пароль" required>
+
+        <input 
+            type="text" 
+            name="login" 
+            placeholder="Логин" 
+            required
+        >
+
+        <input 
+            type="password" 
+            name="password" 
+            placeholder="Пароль" 
+            required
+        >
+
         <button type="submit">Войти</button>
     </form>
 
     <p>
-        Нет аккаунта?  
+        Нет аккаунта?
         <a href="{{ url_for('auth.register') }}">Зарегистрироваться</a>
     </p>
 
