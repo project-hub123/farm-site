@@ -1,21 +1,13 @@
 import os
 
-BASE_DIR = os.path.abspath(os.path.dirname(__file__))
-
-class Config:
-    SECRET_KEY = "super_secret_key_123"
-
-    # Путь к базе данных SQLite
-    SQLALCHEMY_DATABASE_URI = "sqlite:///" + os.path.join(BASE_DIR, "db.sqlite3")
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
-
-    # Режим для слабовидящих (если понадобится использовать в шаблонах)
-    LOW_VISION_MODE = False
-
-
-class DevelopmentConfig(Config):
+class DevelopmentConfig:
     DEBUG = True
+    SECRET_KEY = "super-secret-key"
 
+    # Папка /app
+    BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "app"))
 
-class ProductionConfig(Config):
-    DEBUG = False
+    # Путь к SQLite внутри /app/db.sqlite3
+    SQLALCHEMY_DATABASE_URI = "sqlite:///" + os.path.join(BASE_DIR, "db.sqlite3")
+
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
