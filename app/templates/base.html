@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <title>{% block title %}Ферма{% endblock %}</title>
 
+    <!-- Основной стиль -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <!-- Версия для слабовидящих -->
     {% if session.get('lowvision') %}
         <link rel="stylesheet" href="{{ url_for('static', filename='css/lowvision.css') }}">
     {% endif %}
