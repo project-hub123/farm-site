@@ -1,0 +1,265 @@
+/* Общие настройки */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: #f7f7f7;
+    color: #333;
+}
+
+h1, h2, h3 {
+    margin-top: 0;
+}
+
+/* Подсветка для поиска */
+.highlight {
+    background: yellow;
+    color: black;
+    font-weight: bold;
+}
+
+/* Шапка и меню */
+header {
+    background: #4CAF50;
+    padding: 15px 0;
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.menu a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.menu a:hover {
+    text-decoration: underline;
+}
+
+/* Контент */
+main {
+    width: 80%;
+    margin: 20px auto;
+}
+
+/* Баннеры */
+.banner-block {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.banner-block img {
+    width: 48%;
+    border-radius: 8px;
+}
+
+/* Блоки главной страницы */
+.intro {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.sections {
+    display: flex;
+    gap: 20px;
+}
+
+.section-card {
+    background: #fff;
+    padding: 15px;
+    flex: 1;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.section-card a {
+    display: inline-block;
+    margin-top: 10px;
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+.section-card a:hover {
+    text-decoration: underline;
+}
+
+/* Животные */
+.animals-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.animal-card {
+    background: #fff;
+    padding: 15px;
+    width: calc(50% - 20px);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.animal-card img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+/* Продукция */
+.products-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.product-card {
+    background: #fff;
+    padding: 15px;
+    width: calc(50% - 20px);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.product-card img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+/* Статьи */
+.articles-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.article-card {
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+/* Страница статьи */
+.article-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* Контакты */
+.contacts-block {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.feedback-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.feedback-form input,
+.feedback-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #bbb;
+    border-radius: 5px;
+}
+
+.feedback-form button {
+    width: 150px;
+    padding: 10px;
+    background: #4CAF50;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.feedback-form button:hover {
+    background: #45a049;
+}
+
+/* Формы */
+.form-block {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    margin: auto;
+}
+
+.form-block form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.form-block input {
+    padding: 10px;
+    border: 1px solid #bbb;
+    border-radius: 5px;
+}
+
+.form-block button {
+    padding: 10px;
+    background: #4CAF50;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.form-block button:hover {
+    background: #45a049;
+}
+
+.error {
+    color: red;
+    margin-bottom: 10px;
+}
+
+/* Профиль */
+.profile-block {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.btn-logout {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 15px;
+    background: #4CAF50;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.btn-logout:hover {
+    background: #45a049;
+}
+
+/* Карта сайта */
+.sitemap-list {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.sitemap-list ul {
+    margin-left: 20px;
+}
+
+/* Подвал */
+footer {
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 40px;
+    background: #ddd;
+}

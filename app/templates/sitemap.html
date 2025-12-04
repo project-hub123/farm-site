@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}Карта сайта — Ферма{% endblock %}
+
+{% block content %}
+
+<h1>Карта сайта</h1>
+
+<div class="sitemap-block">
+
+    <ul class="sitemap-list">
+
+        <li><a href="{{ url_for('main.index') }}">Главная</a></li>
+
+        <li><a href="{{ url_for('main.about') }}">О ферме</a></li>
+
+        <li><a href="{{ url_for('animals.animals_list') }}">Животные</a></li>
+
+        <li><a href="{{ url_for('products.products_list') }}">Продукция</a></li>
+
+        <li>
+            <a href="{{ url_for('articles.articles_list') }}">Статьи</a>
+            <ul>
+                <li><a href="{{ url_for('articles.article_item', article_id=1) }}">Правильный уход за коровами</a></li>
+                <li><a href="{{ url_for('articles.article_item', article_id=2) }}">Преимущества домашнего молока</a></li>
+                <li><a href="{{ url_for('articles.article_item', article_id=3) }}">Как выбрать качественный сыр</a></li>
+                <li><a href="{{ url_for('articles.article_item', article_id=4) }}">Разведение кур в хозяйстве</a></li>
+                <li><a href="{{ url_for('articles.article_item', article_id=5) }}">Преимущества натуральной продукции</a></li>
+            </ul>
+        </li>
+
+        <li><a href="{{ url_for('main.contacts') }}">Контакты</a></li>
+
+        {% if session.get('user') %}
+            <li><a href="{{ url_for('users.profile') }}">Профиль</a></li>
+            <li><a href="{{ url_for('users.logout') }}">Выход</a></li>
+        {% else %}
+            <li><a href="{{ url_for('users.login') }}">Вход</a></li>
+            <li><a href="{{ url_for('users.register') }}">Регистрация</a></li>
+        {% endif %}
+
+        <li><a href="{{ url_for('main.sitemap') }}">Карта сайта</a></li>
+
+    </ul>
+
+</div>
+
+{% endblock %}

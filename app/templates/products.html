@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Продукция — Ферма{% endblock %}
+
+{% block content %}
+
+<h1>Продукция фермы</h1>
+
+<div class="products-list">
+
+    <div class="product-card">
+        <img src="{{ url_for('static', filename='images/products/milk.jpg') }}" alt="Молоко">
+        <h3>Молоко</h3>
+        <p>Свежие натуральные молочные продукты, полученные от наших коров и коз.</p>
+    </div>
+
+    <div class="product-card">
+        <img src="{{ url_for('static', filename='images/products/cheese.jpg') }}" alt="Сыр">
+        <h3>Сыр</h3>
+        <p>Домашний сыр, приготовленный по традиционным рецептам.</p>
+    </div>
+
+    <div class="product-card">
+        <img src="{{ url_for('static', filename='images/products/meat.jpg') }}" alt="Мясо">
+        <h3>Мясо</h3>
+        <p>Экологически чистое мясо, выращенное без добавок и гормонов.</p>
+    </div>
+
+    <div class="product-card">
+        <img src="{{ url_for('static', filename='images/products/eggs.jpg') }}" alt="Яйца">
+        <h3>Яйца</h3>
+        <p>Свежие куриные яйца ежедневно.</p>
+    </div>
+
+</div>
+
+{% endblock %}

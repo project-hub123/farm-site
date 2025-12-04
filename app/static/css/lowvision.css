@@ -1,0 +1,109 @@
+/* Режим для слабовидящих */
+
+/* Общие настройки */
+body {
+    background: #000;
+    color: #fff;
+    font-size: 22px;
+    line-height: 1.6;
+}
+
+/* Заголовки */
+h1, h2, h3 {
+    color: #ffea00;
+}
+
+/* Ссылки */
+a {
+    color: #ffea00;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: #ffffff;
+}
+
+/* Меню */
+header {
+    background: #111;
+    padding: 20px 0;
+}
+
+.menu a {
+    color: #ffea00;
+    font-size: 24px;
+}
+
+/* Основной контент */
+main {
+    width: 85%;
+    margin: 30px auto;
+}
+
+/* Баннеры */
+.banner-block img {
+    width: 100%;
+    border: 3px solid #ffea00;
+}
+
+/* Карточки */
+.section-card,
+.animal-card,
+.product-card,
+.article-card,
+.profile-block,
+.form-block,
+.contacts-block,
+.sitemap-list,
+.intro,
+.article-content {
+    background: #111;
+    color: #ffea00;
+    border: 2px solid #ffea00;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.section-card a,
+.article-card a,
+.product-card a,
+.animal-card a {
+    color: #ffea00;
+    text-decoration: underline;
+}
+
+/* Формы */
+input, textarea {
+    background: #000;
+    color: #fff;
+    border: 2px solid #ffea00;
+    font-size: 20px;
+    padding: 10px;
+}
+
+button {
+    background: #ffea00;
+    color: #000;
+    border: none;
+    font-size: 22px;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #fff;
+}
+
+/* Ошибки */
+.error {
+    color: #ff4d4d;
+    font-weight: bold;
+}
+
+/* Подвал */
+footer {
+    background: #111;
+    color: #ffea00;
+    padding: 20px 0;
+    font-size: 20px;
+}

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Контакты — Ферма{% endblock %}
+
+{% block content %}
+
+<h1>Контакты</h1>
+
+<div class="contacts-block">
+
+    <div class="contact-info">
+        <p><strong>Адрес:</strong> Деревня Зеленая, ул. Полевая, 15</p>
+        <p><strong>Телефон:</strong> +7 (900) 123-45-67</p>
+        <p><strong>Email:</strong> info@ferma.ru</p>
+        <p><strong>Время работы:</strong> ежедневно с 08:00 до 20:00</p>
+    </div>
+
+    <h2>Обратная связь</h2>
+
+    <form class="feedback-form">
+        <label>Ваше имя:</label>
+        <input type="text" name="name" required>
+
+        <label>Email:</label>
+        <input type="email" name="email" required>
+
+        <label>Сообщение:</label>
+        <textarea name="message" required></textarea>
+
+        <button type="submit">Отправить</button>
+    </form>
+
+</div>
+
+{% endblock %}

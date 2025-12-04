@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Профиль — Ферма{% endblock %}
+
+{% block content %}
+
+<h1>Профиль пользователя</h1>
+
+<div class="profile-block">
+
+    <p><strong>Логин:</strong> {{ user }}</p>
+    <p><strong>Роль:</strong> {{ role }}</p>
+
+    <a class="btn-logout" href="{{ url_for('users.logout') }}">Выйти из аккаунта</a>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Ферма{% endblock %}</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {% if session.get('lowvision') %}
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/lowvision.css') }}">
+    {% endif %}
+
+</head>
+<body>
+
+<header>
+    <nav class="menu">
+        <a href="{{ url_for('main.index') }}">Главная</a>
+        <a href="{{ url_for('main.about') }}">О ферме</a>
+        <a href="{{ url_for('animals.animals_list') }}">Животные</a>
+        <a href="{{ url_for('products.products_list') }}">Продукция</a>
+        <a href="{{ url_for('articles.articles_list') }}">Статьи</a>
+        <a href="{{ url_for('main.contacts') }}">Контакты</a>
+        <a href="{{ url_for('main.sitemap') }}">Карта сайта</a>
+
+        {% if session.get('user') %}
+            <a href="{{ url_for('users.profile') }}">Профиль</a>
+            <a href="{{ url_for('users.logout') }}">Выход</a>
+        {% else %}
+            <a href="{{ url_for('users.login') }}">Вход</a>
+            <a href="{{ url_for('users.register') }}">Регистрация</a>
+        {% endif %}
+    </nav>
+</header>
+
+<main>
+    {% block content %}{% endblock %}
+</main>
+
+<footer>
+    <p>© Ферма, 2025</p>
+</footer>
+
+</body>
+</html>

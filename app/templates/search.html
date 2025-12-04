@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+
+    <h1>Поиск по сайту</h1>
+
+    <!-- Форма поиска -->
+    <form action="{{ url_for('search.search') }}" method="POST" class="search-box">
+        <input type="text" name="query" placeholder="Введите запрос..." value="{{ query }}">
+        <button type="submit">Найти</button>
+    </form>
+
+    <hr>
+
+    <!-- Результаты -->
+    {% if query %}
+        <h2>Результаты поиска по запросу: "{{ query }}"</h2>
+
+        {% if results %}
+            <ul class="search-results">
+                {% for item in results %}
+                    <li class="search-item">
+                        <span class="search-type">{{ item.type }}:</span>
+                        <a href="{{ item.url }}" class="search-link">{{ item.title }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="search-empty">Ничего не найдено.</p>
+        {% endif %}
+    {% else %}
+        <p>Введите запрос, чтобы начать поиск.</p>
+    {% endif %}
+
+</div>
+{% endblock %}

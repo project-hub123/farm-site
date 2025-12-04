@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Статьи — Ферма{% endblock %}
+
+{% block content %}
+
+<h1>Статьи</h1>
+
+<div class="articles-list">
+
+    <div class="article-card">
+        <h3>Правильный уход за коровами</h3>
+        <p>Основные правила содержания крупного рогатого скота на ферме.</p>
+        <a href="{{ url_for('articles.article_item', article_id=1) }}">Читать далее</a>
+    </div>
+
+    <div class="article-card">
+        <h3>Преимущества домашнего молока</h3>
+        <p>Почему натуральное фермерское молоко лучше промышленного.</p>
+        <a href="{{ url_for('articles.article_item', article_id=2) }}">Читать далее</a>
+    </div>
+
+    <div class="article-card">
+        <h3>Как выбрать качественный сыр</h3>
+        <p>Советы по выбору настоящего фермерского сыра.</p>
+        <a href="{{ url_for('articles.article_item', article_id=3) }}">Читать далее</a>
+    </div>
+
+    <div class="article-card">
+        <h3>Разведение кур в хозяйстве</h3>
+        <p>Что нужно знать каждому, кто решил завести собственных кур.</p>
+        <a href="{{ url_for('articles.article_item', article_id=4) }}">Читать далее</a>
+    </div>
+
+    <div class="article-card">
+        <h3>Преимущества натуральной продукции</h3>
+        <p>Почему фермерские продукты остаются популярными годами.</p>
+        <a href="{{ url_for('articles.article_item', article_id=5) }}">Читать далее</a>
+    </div>
+
+</div>
+
+{% endblock %}

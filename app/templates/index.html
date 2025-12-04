@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+
+    <!-- Поисковая строка -->
+    <form action="{{ url_for('search.search') }}" method="POST" class="search-box">
+        <input type="text" name="query" placeholder="Поиск по сайту..." required>
+        <button type="submit">Найти</button>
+    </form>
+
+    <h1>Добро пожаловать на ферму!</h1>
+
+    <p class="intro-text">
+        Наша ферма занимается разведением животных и производством натуральной продукции.
+        Здесь вы можете узнать о наших животных, товарах, новостях и многом другом.
+    </p>
+
+    <!-- Баннер -->
+    <div class="banner-block">
+        <img src="{{ url_for('static', filename='images/banners/banner1.jpg') }}" alt="Баннер фермы" style="width: 550px; height: 450px; object-fit: contain;">
+    </div>
+
+    <!-- Основные разделы сайта -->
+    <div class="home-sections">
+
+        <!-- Животные -->
+        <div class="home-card">
+            <img src="{{ url_for('static', filename='images/animals/cow.jpg') }}" alt="Животные"style="width: 350px; height: 350px; object-fit: contain;">
+            <h3>Животные фермы</h3>
+            <p>Узнайте подробнее о животных, которых мы выращиваем.</p>
+            <a href="{{ url_for('animals.animals_list') }}" class="btn">Перейти</a>
+        </div>
+
+        <!-- Продукция -->
+        <div class="home-card">
+            <img src="{{ url_for('static', filename='images/products/milk.jpg') }}" alt="Продукция"style="width: 350px; height: 350px; object-fit: contain;">
+            <h3>Продукция</h3>
+            <p>Наша фермерская продукция — натуральная и свежая.</p>
+            <a href="{{ url_for('products.products_list') }}" class="btn">Перейти</a>
+        </div>
+
+        <!-- Статьи -->
+        <div class="home-card">
+            <img src="{{ url_for('static', filename='images/icons/icon_articles.png') }}" alt="Статьи" style="width: 350px; height: 350px; object-fit: contain;">
+            <h3>Статьи</h3>
+            <p>Полезные материалы о фермерстве и сельском хозяйстве.</p>
+            <a href="{{ url_for('articles.articles_list') }}" class="btn">Перейти</a>
+        </div>
+
+ 
+
+    </div>
+
+</div>
+{% endblock %}

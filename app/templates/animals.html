@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Животные — Ферма{% endblock %}
+
+{% block content %}
+
+<h1>Животные фермы</h1>
+
+<div class="animals-list">
+
+    <div class="animal-card">
+        <img src="{{ url_for('static', filename='images/animals/cow.jpg') }}" alt="Корова">
+        <h3>Корова</h3>
+        <p>Дает свежее молоко и участвует в производстве молочной продукции.</p>
+    </div>
+
+    <div class="animal-card">
+        <img src="{{ url_for('static', filename='images/animals/goat.jpg') }}" alt="Коза">
+        <h3>Коза</h3>
+        <p>Обеспечивает нас натуральным козьим молоком и сырами.</p>
+    </div>
+
+    <div class="animal-card">
+        <img src="{{ url_for('static', filename='images/animals/sheep.jpg') }}" alt="Овца">
+        <h3>Овца</h3>
+        <p>Мы получаем качественную шерсть и натуральное мясо.</p>
+    </div>
+
+    <div class="animal-card">
+        <img src="{{ url_for('static', filename='images/animals/chicken.jpg') }}" alt="Курица">
+        <h3>Курица</h3>
+        <p>Свежие яйца и натуральное мясо ежедневно.</p>
+    </div>
+
+</div>
+
+{% endblock %}
