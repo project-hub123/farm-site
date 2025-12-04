@@ -3,34 +3,48 @@
 {% block content %}
 <div class="container">
 
-    <h1>Поиск по сайту</h1>
+    <h1>Результаты поиска</h1>
 
     <!-- Форма поиска -->
     <form action="{{ url_for('search.search') }}" method="POST" class="search-box">
-        <input type="text" name="query" placeholder="Введите запрос..." value="{{ query }}">
+        <input type="text" name="query" placeholder="Поиск..." value="{{ query }}">
         <button type="submit">Найти</button>
     </form>
 
-    <hr>
+    {% if query %}
+        <p>Вы искали: <strong>{{ query }}</strong></p>
+    {% endif %}
 
     <!-- Результаты -->
-    {% if query %}
-        <h2>Результаты поиска по запросу: "{{ query }}"</h2>
+    {% if results %}
+        <div class="search-results">
 
-        {% if results %}
-            <ul class="search-results">
-                {% for item in results %}
-                    <li class="search-item">
-                        <span class="search-type">{{ item.type }}:</span>
-                        <a href="{{ item.url }}" class="search-link">{{ item.title }}</a>
-                    </li>
-                {% endfor %}
-            </ul>
-        {% else %}
-            <p class="search-empty">Ничего не найдено.</p>
-        {% endif %}
+            {% for item in results %}
+                <div class="result-item">
+
+                    <h3>{{ item.title }}</h3>
+                    <p>{{ item.type }}</p>
+
+                    <!-- Правильная ссылка в зависимости от типа -->
+                    {% if item.type == 'Статья' %}
+                        <a href="/articles/{{ item.url.split('/')[-1] }}">Читать статью</a>
+
+                    {% elif item.type == 'Новость' %}
+                        <a href="/news/{{ item.url.split('/')[-1] }}">Перейти к новости</a>
+
+                    {% elif item.type == 'Продукция' %}
+                        <a href="/products">Открыть каталог продукции</a>
+                    {% endif %}
+
+                </div>
+            {% endfor %}
+
+        </div>
+
     {% else %}
-        <p>Введите запрос, чтобы начать поиск.</p>
+        {% if query %}
+            <p>Ничего не найдено.</p>
+        {% endif %}
     {% endif %}
 
 </div>
