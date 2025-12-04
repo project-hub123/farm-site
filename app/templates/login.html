@@ -1,34 +1,22 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
-{% block title %}Вход — Ферма{% endblock %}
+{% block title %}Вход{% endblock %}
 
 {% block content %}
+<div class="container">
 
-<h1>Вход</h1>
+    <h1>Вход</h1>
 
-<div class="form-block">
-
-    {% if error %}
-        <div class="error">{{ error }}</div>
-    {% endif %}
-
-    <form method="post">
-
-        <label>Логин:</label>
-        <input type="text" name="login" required>
-
-        <label>Пароль:</label>
-        <input type="password" name="password" required>
-
+    <form method="POST" action="{{ url_for('auth.login') }}">
+        <input type="text" name="username" placeholder="Логин" required>
+        <input type="password" name="password" placeholder="Пароль" required>
         <button type="submit">Войти</button>
-
     </form>
 
     <p>
-        Нет аккаунта?
-        <a href="{{ url_for('users.register') }}">Зарегистрироваться</a>
+        Нет аккаунта?  
+        <a href="{{ url_for('auth.register') }}">Зарегистрироваться</a>
     </p>
 
 </div>
-
 {% endblock %}
