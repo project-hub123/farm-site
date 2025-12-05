@@ -1,18 +1,39 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
-{% block title %}Профиль — Ферма{% endblock %}
+{% block title %}Профиль{% endblock %}
 
 {% block content %}
+<div class="container">
 
-<h1>Профиль пользователя</h1>
+    <h1>Профиль пользователя</h1>
 
-<div class="profile-block">
+    <div class="profile-block">
 
-    <p><strong>Логин:</strong> {{ user }}</p>
-    <p><strong>Роль:</strong> {{ role }}</p>
+        <p><strong>Логин:</strong> {{ user.login }}</p>
+        <p><strong>Роль:</strong> {{ user.role }}</p>
 
-    <a class="btn-logout" href="{{ url_for('users.logout') }}">Выйти из аккаунта</a>
+        <hr>
+
+        {% if user.role == "admin" %}
+        <h2>Панель администратора</h2>
+
+        <div class="admin-actions">
+
+            <a class="btn-admin" href="{{ url_for('users.users_admin') }}">
+                Список пользователей
+            </a>
+
+            <a class="btn-admin" href="{{ url_for('users.create_user') }}">
+                Создать пользователя
+            </a>
+
+        </div>
+
+        <hr>
+        {% endif %}
+
+        <a class="btn-logout" href="{{ url_for('auth.logout') }}">Выйти из аккаунта</a>
+    </div>
 
 </div>
-
 {% endblock %}
