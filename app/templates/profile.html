@@ -19,7 +19,7 @@
 
         <div class="admin-actions">
 
-            <a class="btn-admin" href="{{ url_for('users.users_admin') }}">
+            <a class="btn-admin" href="{{ url_for('users.admin_users') }}">
                 Список пользователей
             </a>
 
@@ -32,7 +32,10 @@
         <hr>
         {% endif %}
 
-        <a class="btn-logout" href="{{ url_for('auth.logout') }}">Выйти из аккаунта</a>
+        <a class="btn-logout" href="{{ url_for('auth.logout') }}">
+            Выйти из аккаунта
+        </a>
+
     </div>
 
 </div>

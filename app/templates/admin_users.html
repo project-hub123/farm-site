@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Список пользователей</h1>
+
+<a class="btn" href="{{ url_for('users.create_user') }}">Создать пользователя</a>
+
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>Логин</th>
+        <th>Роль</th>
+        <th></th>
+    </tr>
+
+    {% for u in users %}
+    <tr>
+        <td>{{ u.id }}</td>
+        <td>{{ u.login }}</td>
+        <td>{{ u.role }}</td>
+        <td><a href="{{ url_for('users.admin_view_user', user_id=u.id) }}">Открыть</a></td>
+    </tr>
+    {% endfor %}
+
+</table>
+{% endblock %}
