@@ -1,26 +1,31 @@
 {% extends "base.html" %}
 
+{% block title %}Список пользователей{% endblock %}
+
 {% block content %}
-<h1>Список пользователей</h1>
+<div class="container">
 
-<a class="btn" href="{{ url_for('users.create_user') }}">Создать пользователя</a>
+    <h1>Список пользователей</h1>
 
-<table class="table">
-    <tr>
-        <th>ID</th>
-        <th>Логин</th>
-        <th>Роль</th>
-        <th></th>
-    </tr>
+    <p>
+        <a class="btn-admin" href="{{ url_for('users.create_user') }}">Создать пользователя</a>
+    </p>
 
-    {% for u in users %}
-    <tr>
-        <td>{{ u.id }}</td>
-        <td>{{ u.login }}</td>
-        <td>{{ u.role }}</td>
-        <td><a href="{{ url_for('users.admin_view_user', user_id=u.id) }}">Открыть</a></td>
-    </tr>
-    {% endfor %}
+    <table class="users-table">
+        <tr>
+            <th>ID</th>
+            <th>Логин</th>
+            <th>Роль</th>
+        </tr>
 
-</table>
+        {% for u in users %}
+        <tr>
+            <td>{{ u.id }}</td>
+            <td>{{ u.login }}</td>
+            <td>{{ u.role }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</div>
 {% endblock %}
